@@ -16,8 +16,8 @@ class MLFFNN():
             for i in range(1, hidden_layers):
                 self.W.append(np.random.uniform(low=-0.1, high=0.1, size=(hidden_sizes[i-1], hidden_sizes[i])))
             self.W.append(np.random.uniform(low=-0.1, high=0.1, size=(hidden_sizes[-1], output_size)))
-            self.hidden_layers = [[MomentumNeuron() for _ in range(hidden_sizes[i])] for i in range(hidden_layers)]
-            self.output_neurons = [MomentumNeuron() for _ in range(output_size)]
+            self.hidden_layers = [[MomentumNeuron(momentum_rate) for _ in range(hidden_sizes[i])] for i in range(hidden_layers)]
+            self.output_neurons = [MomentumNeuron(momentum_rate) for _ in range(output_size)]
             for layer in self.hidden_layers:
                 for neuron in layer:
                     neuron.bias = np.random.uniform(low=-0.1, high=0.1)
